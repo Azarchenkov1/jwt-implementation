@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApplicationJWT5.Models;
 
 namespace WebApplicationJWT5.Controllers
 {
@@ -11,6 +13,16 @@ namespace WebApplicationJWT5.Controllers
     [Route("api/[controller]")]
     public class TourListController : Controller
     {
+
+        static TourAgencyContext db;
+
+        TourAgencyContext Factory()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TourAgencyContext>();
+            var connection = "Server=LAPTOP-73MHSR7G\\SQLEXPRESS;Database=TourAgencyDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            optionsBuilder.UseSqlServer(connection);
+            return new TourAgencyContext(optionsBuilder.Options);
+        }
 
         public static string[] TourList = new[]
         {
@@ -28,6 +40,18 @@ namespace WebApplicationJWT5.Controllers
                 price = rng.Next(10000, 20000),
                 isTransferInclude = true
             });
+        }
+
+        [HttpGet("[action]")]
+        public void ModelPush()
+        {
+            db.Changes();
+        }
+
+        [HttpGet("[action]")]
+        public void DataBaseInitialize()
+        {
+            db = this.Factory();
         }
 
         public class Tour
