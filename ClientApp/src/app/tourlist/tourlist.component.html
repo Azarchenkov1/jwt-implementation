@@ -1,0 +1,17 @@
+<p *ngIf="!tourlist"><em>Loading...</em></p>
+
+<div *ngIf="tourlist" class="container">
+  <div *ngIf="tourlist" class="row">
+    <div class="col-md-2">
+    </div>
+    <div *ngIf="tourlist" class="col-md-8" style="background-color: yellow; text-align: center;margin-top: 5px; border-style: solid; border-width: 2px; border-color: black">
+      <h2>Tour List</h2>
+      <div *ngFor="let tour of tourlist" style="background-color: white; margin: 10px; border-style: solid; border-width: 2px; border-color: black">
+        <p>Hotel name: {{ tour.hotel }}</p>
+        <p>Price: {{ tour.price }}</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+</div>

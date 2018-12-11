@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
 import { StoreComponent } from './store/store.component';
+import { TourlistComponent } from './tourlist/tourlist.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StoreComponent } from './store/store.component';
     CounterComponent,
     FetchDataComponent,
     LoginComponent,
-    StoreComponent
+    StoreComponent,
+    TourlistComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { StoreComponent } from './store/store.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'store', component: StoreComponent }
+      { path: 'store', component: StoreComponent },
+      { path: 'tourlist', component: TourlistComponent }
     ])
   ],
   providers: [],
